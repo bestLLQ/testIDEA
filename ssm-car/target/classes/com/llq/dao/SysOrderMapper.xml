@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.llq.dao.SysOrderMapper">
+  <resultMap id="BaseResultMap" type="com.llq.pojo.SysOrder">
+    <!--@mbg.generated-->
+    <!--@Table sys_order-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="getid" jdbcType="INTEGER" property="getid" />
+    <result column="backid" jdbcType="INTEGER" property="backid" />
+    <result column="oprice" jdbcType="DOUBLE" property="oprice" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, cid, `uid`, getid, backid, oprice, `status`
+  </sql>
+</mapper>

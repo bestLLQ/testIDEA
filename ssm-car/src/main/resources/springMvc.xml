@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+<!--  包扫描器     -->
+    <context:component-scan base-package="com.llq"></context:component-scan>
+<!--  默认静态资源  -->
+    <mvc:default-servlet-handler/>
+<!--  开始注解配置  -->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!-- 使用thymeleaf解析 -->
+
+    <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver" id="templateResolver">
+        <property name="cacheable" value="false"></property>
+        <property name="characterEncoding" value="utf-8"></property>
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".html" />
+        <property name="templateMode" value="HTML" />
+    </bean>
+
+
+    <bean id="templateEngine"
+          class="org.thymeleaf.spring5.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver" />
+    </bean>
+
+    <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine" />
+        <!--解决中文乱码-->
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean class="com.llq.config.SwaggerConfig" />
+</beans>
